@@ -1,0 +1,36 @@
+{
+    "name": "dlabs/codeception-module-visualception",
+    "description": "Visual regression tests for Codeception",
+    "type": "library",
+    "keywords": ["codeception", "selenium", "imagick"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian Neubert - phmLabs",
+            "email": "neubert.sebastian@guj.de",
+            "homepage": "https://github.com/sebastianneubert",
+            "role": "Developer"
+        },
+        {
+		"name": "Nils Langner - G+J Digital Products",
+		"email": "contact@phmlabs.com",
+		"homepage": "http://www.phmlabs.com",
+		"role": "Developer"
+	},
+        {
+            "name": "dlabs",
+            "email": "info@dlabs.si",
+            "homepage": "https://github.com/dlabs",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.1.3",
+        "codeception/codeception": "2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codeception\\Module\\": "src"
+        }
+    }
+}

@@ -9,3 +9,5 @@
 ._.DS_Store
 test/integration/tests/_log/
 test/integration/tests/acceptance/WebGuy.php
+
+/vendor/
