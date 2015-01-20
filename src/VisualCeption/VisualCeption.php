@@ -2,6 +2,7 @@
 
 namespace Codeception\Module;
 use Codeception\Module\ImageDeviationException;
+use VisualCeption\Storage\Factory;
 
 /**
  * Class VisualCeption
@@ -52,7 +53,7 @@ class VisualCeption extends \Codeception\Module
             $this->maximumDeviation = $this->config["maximumDeviation"];
         }
 
-        $this->storageStrategy = \Factory::getStorage($this->config);
+        $this->storageStrategy = Factory::getStorage($this->config);
     }
 
     /**
