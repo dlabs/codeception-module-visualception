@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeception\Module\Html;
+namespace Codeception\Module\VisualCeption\Html;
 
 class Manipulation
 {

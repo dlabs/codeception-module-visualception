@@ -1,9 +1,9 @@
 <?php
 
-namespace Codeception\Module;
+namespace Codeception\Module\VisualCeption;
 
-use Codeception\Module\Image\ComparisonResult;
-use Codeception\Module\Storage\Storage;
+use Codeception\Module\VisualCeption\Image\ComparisonResult;
+use Codeception\Module\VisualCeption\Storage\Storage;
 
 class ImageDeviationException extends \PHPUnit_Framework_ExpectationFailedException
 {

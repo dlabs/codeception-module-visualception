@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeception\Module\Storage;
+namespace Codeception\Module\VisualCeption\Storage;
 
 class Factory
 {

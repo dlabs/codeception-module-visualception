@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeception\Module\Image;
+namespace Codeception\Module\VisualCeption\Image;
 
 class ComparisonResult
 {

@@ -2,11 +2,13 @@
 
 namespace Codeception\Module;
 
-use Codeception\Module\ImageDeviationException;
-use Codeception\Module\Storage\Factory;
-use Codeception\Module\Image\Comparison;
-use Codeception\Module\Html\Screenshot;
-use Codeception\Module\Html\Manipulation;
+use Codeception\Module\VisualCeption\ImageNotFoundException;
+use Codeception\Module\VisualCeption\ImageDeviationException;
+
+use Codeception\Module\VisualCeption\Storage\Factory;
+use Codeception\Module\VisualCeption\Image\Comparison;
+use Codeception\Module\VisualCeption\Html\Screenshot;
+use Codeception\Module\VisualCeption\Html\Manipulation;
 
 /**
  * Class VisualCeption
@@ -86,8 +88,8 @@ class VisualCeption extends \Codeception\Module
     {
         $comparisonResult = $this->getVisualChanges($identifier, $elementId, (array)$excludedElements);
 
-        if($comparisonResult->getDeviation() <= $this->maximumDeviation ) {
-            $this->assertTrue(true);
+        $this->assertTrue(true);
+        if ($comparisonResult->getDeviation() <= $this->maximumDeviation ) {
             throw new ImageDeviationException("The deviation of the taken screenshot is too low (" . $comparisonResult->getDeviation() . "%)",
                 $comparisonResult, $this->storageStrategy, $identifier);
         }
@@ -105,8 +107,8 @@ class VisualCeption extends \Codeception\Module
     {
         $comparisonResult = $this->getVisualChanges($identifier, $elementId, (array)$excludedElements);
 
+        $this->assertTrue(true);
         if($comparisonResult->getDeviation() > $this->maximumDeviation ) {
-            $this->assertTrue(true);
             throw new ImageDeviationException("The deviation of the taken screenshot is too high (" . $comparisonResult->getDeviation() . "%)",
                 $comparisonResult, $this->storageStrategy, $identifier);
         }
@@ -114,8 +116,15 @@ class VisualCeption extends \Codeception\Module
 
     private function getVisualChanges($identifier, $elementId, array $excludedElements)
     {
-        $expectedImage = $this->storageStrategy->getImage($identifier);
         $currentImage = $this->getCurrentImage($excludedElements, $elementId);
+
+        $expectedImage = null;
+        try {
+            $expectedImage = $this->storageStrategy->getImage($identifier);
+        } catch (ImageNotFoundException $e) {
+            $this->storageStrategy->setImage($currentImage, $identifier);
+            $expectedImage = $currentImage;
+        }
         return $this->getComparisonResult($expectedImage, $currentImage);
     }
 

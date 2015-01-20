@@ -2,7 +2,7 @@
 
 namespace Codeception\Module\Report;
 
-use Codeception\Module\ImageDeviationException;
+use Codeception\Module\VisualCeption\ImageDeviationException;
 
 class FileReporter implements Reporter {
 

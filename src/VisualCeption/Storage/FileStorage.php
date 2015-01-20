@@ -1,6 +1,8 @@
 <?php
 
-namespace Codeception\Module\Storage;
+namespace Codeception\Module\VisualCeption\Storage;
+
+use Codeception\Module\VisualCeption\ImageNotFoundException;
 
 class FileStorage implements Storage {
 
@@ -41,10 +43,8 @@ class FileStorage implements Storage {
     public function getImage($identifier)
     {
         $imageFile = $this->getStorageFile($identifier);
-        if( !file_exists($imageFile)) {
-            $image = new \Imagick();
-            $image->newImage(1, 1, new \ImagickPixel('white'));
-            return $image;
+        if (!file_exists($imageFile)) {
+            throw new ImageNotFoundException();
         }
         return new \Imagick($imageFile);
     }

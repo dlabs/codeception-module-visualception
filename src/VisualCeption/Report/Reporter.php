@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeception\Module\Report;
+namespace Codeception\Module\VisualCeption\Report;
 
 use Codeception\Module\ImageDeviationException;
 
