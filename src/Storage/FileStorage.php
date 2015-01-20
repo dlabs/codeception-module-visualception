@@ -1,6 +1,8 @@
 <?php
 
-class FileStorage implements \Storage {
+namespace Codeception\Module\Storage;
+
+class FileStorage implements Storage {
 
     private $storageDir;
 
@@ -41,7 +43,7 @@ class FileStorage implements \Storage {
         $imageFile = $this->getStorageFile($identifier);
         if( !file_exists($imageFile)) {
             $image = new \Imagick();
-            $image->newImage(1, 1, new ImagickPixel('white'));
+            $image->newImage(1, 1, new \ImagickPixel('white'));
             return $image;
         }
         return new \Imagick($imageFile);

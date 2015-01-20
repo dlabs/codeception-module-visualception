@@ -1,5 +1,7 @@
 <?php
 
+namespace Codeception\Module\Report;
+
 use Codeception\Module\ImageDeviationException;
 
 class FileReporter implements Reporter {

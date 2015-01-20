@@ -1,5 +1,7 @@
 <?php
 
+namespace Codeception\Module\Image;
+
 class Comparison
 {
     /**
@@ -23,6 +25,6 @@ class Comparison
         $result = $image1->compareImages($image2, \Imagick::METRIC_MEANSQUAREERROR);
         $result[0]->setImageFormat('png');
 
-        return new \ComparisonResult(round($result[1] * 100, 2), $image1, $image2, $result[0]);
+        return new ComparisonResult(round($result[1] * 100, 2), $image1, $image2, $result[0]);
     }
 }

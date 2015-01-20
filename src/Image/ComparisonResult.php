@@ -1,5 +1,7 @@
 <?php
 
+namespace Codeception\Module\Image;
+
 class ComparisonResult
 {
     private $deviation;

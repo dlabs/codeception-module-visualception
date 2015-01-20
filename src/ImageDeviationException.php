@@ -2,13 +2,16 @@
 
 namespace Codeception\Module;
 
+use Codeception\Module\Image\ComparisonResult;
+use Codeception\Module\Storage\Storage;
+
 class ImageDeviationException extends \PHPUnit_Framework_ExpectationFailedException
 {
     private $result;
     private $storage;
     private $identifier;
 
-    public function __construct($message, \ComparisonResult $comparisonResult, \Storage $storage, $identifier = "leer")
+    public function __construct($message, ComparisonResult $comparisonResult, Storage $storage, $identifier = "leer")
     {
         $this->result = $comparisonResult;
         $this->storage = $storage;

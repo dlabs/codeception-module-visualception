@@ -1,6 +1,8 @@
 <?php
 
-class RemoteStorage implements \Storage {
+namespace Codeception\Module\Storage;
+
+class RemoteStorage implements Storage {
 
     private $storageServer;
 
