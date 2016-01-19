@@ -6,7 +6,7 @@ class Manipulation
 {
     private $webDriver;
 
-    public function __construct(\RemoteWebDriver $webDriver)
+    public function __construct(\Facebook\WebDriver\Remote\RemoteWebDriver $webDriver)
     {
         $this->webDriver = $webDriver;
         $this->injectJQuery();
