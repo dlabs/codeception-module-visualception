@@ -24,6 +24,7 @@ use Codeception\Module\VisualCeption\Html\Manipulation;
 class VisualCeption extends \Codeception\Module
 {
     private $maximumDeviation = 0;
+    private $webDriverClass = 'WebDriver';
 
     /**
      * @var \RemoteWebDriver
@@ -36,27 +37,18 @@ class VisualCeption extends \Codeception\Module
     private $storageStrategy;
 
     /**
-     * Create an object from VisualCeption Class
-     *
-     * @param array $config
-     * @return result
-     */
-    public function __construct($config)
-    {
-        $result = parent::__construct($config);
-        $this->init();
-        return $result;
-    }
-
-    /**
      * Initialize the module and read the config.
      *
      * @throws \RuntimeException
      */
-    private function init()
+    private function _initialize()
     {
         if (array_key_exists('maximumDeviation', $this->config)) {
             $this->maximumDeviation = $this->config["maximumDeviation"];
+        }
+        
+        if (array_key_exists('webdriver', $this->config)) {
+            $this->webDriverClass = $this->config["webdriver"];
         }
 
         $this->storageStrategy = Factory::getStorage($this->config);
@@ -70,10 +62,10 @@ class VisualCeption extends \Codeception\Module
      */
     public function _before(\Codeception\TestCase $test)
     {
-        if (!$this->hasModule("WebDriver")) {
-            throw new \Exception("VisualCeption uses the WebDriver. Please be sure that this module is activated.");
+        if (!$this->hasModule($this->webDriverClass)) {
+            throw new \Exception("VisualCeption uses the " . $this->webDriverClass . ". Please be sure that this module is activated.");
         }
-        $this->webDriver = $this->getModule("WebDriver")->webDriver;
+        $this->webDriver = $this->getModule($this->webDriverClass)->webDriver;
     }
 
     /**
